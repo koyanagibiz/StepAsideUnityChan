@@ -274,7 +274,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -273754420
+  randomSeed: 1918726108
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5004,7 +5004,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1341667232877328, guid: e06a14a98ed3d46659bf92ea5fbeb7e6, type: 2}
   muzzle: {fileID: 2109101631}
-  speed: 3000
 --- !u!1 &2128303257
 GameObject:
   m_ObjectHideFlags: 0

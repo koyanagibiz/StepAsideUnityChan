@@ -11,7 +11,7 @@ public class Shooting : MonoBehaviour {
 	public Transform muzzle;
 
 	// 弾丸の速度
-	public float speed = 3000.0f;
+	private float speed = 5000;
 
 
 	// Use this for initialization
