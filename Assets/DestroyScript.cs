@@ -9,8 +9,6 @@ public class DestroyScript : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 
-
-
 	// Use this for initialization
 	void Start () {
 		
