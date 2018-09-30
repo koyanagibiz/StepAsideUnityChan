@@ -113,11 +113,6 @@ public class UnityChanController : MonoBehaviour {
 		//コインに衝突した場合
 		if (other.gameObject.tag == "CoinTag") {
 
-			// スコアを加算
-			this.score += 10;
-
-			//ScoreText獲得した点数を表示
-			this.scoreText.GetComponent<Text> ().text = "Score " + this.score + "pt";
 
 
 			//パーティクルを再生
@@ -153,5 +148,6 @@ public class UnityChanController : MonoBehaviour {
 	public void GetMyRightButtonUp() {
 		this.isRButtonDown = false;
 	}
+
 
 }

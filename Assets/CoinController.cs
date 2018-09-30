@@ -19,4 +19,24 @@ public class CoinController : MonoBehaviour {
 
 
 	}
+
+	void OnTriggerEnter(Collider other) {
+		
+		if (other.gameObject.tag == "UnityChanTag") {
+			//スコア処理を追加
+			FindObjectOfType<Score> ().AddPoint (10);
+
+
+			//相手のタグがBallならば、自分を消す
+			Destroy (this.gameObject);
+		}
+
+		if (other.gameObject.tag == "BulletTag") {
+			FindObjectOfType<Score> ().AddPoint (-10);
+			Destroy (this.gameObject);
+
+
+		}
+
+	}
 }
