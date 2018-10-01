@@ -65,6 +65,7 @@ public class UnityChanController : MonoBehaviour {
 			this.turnForce *= this.coefficient;
 			this.upForce *= this.coefficient;
 			this.myAnimator.speed *= this.coefficient;
+
 		}
 
 		//Unityちゃんに前方向の力を加える
@@ -92,6 +93,9 @@ public class UnityChanController : MonoBehaviour {
 			//Unityちゃんに上方向の力を加える
 			this.myRigidbody.AddForce (this.transform.up * this.upForce);
 		}
+			
+
+
 	}
 
 	//トリガーモードで他のオブジェクトと接触した場合の処理
@@ -102,6 +106,7 @@ public class UnityChanController : MonoBehaviour {
 			this.isEnd = true;
 			//stateTextにGAME OVERを表示
 			this.stateText.GetComponent<Text>().text = "GAME OVER";
+
 		}
 
 		//ゴール地点に到達した場合

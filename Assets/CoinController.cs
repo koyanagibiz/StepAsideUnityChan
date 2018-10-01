@@ -26,8 +26,6 @@ public class CoinController : MonoBehaviour {
 			//スコア処理を追加
 			FindObjectOfType<Score> ().AddPoint (10);
 
-
-			//相手のタグがBallならば、自分を消す
 			Destroy (this.gameObject);
 		}
 
