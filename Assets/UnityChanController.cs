@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UnityChanController : MonoBehaviour {
 	//アニメーションするためのコンポーネントを入れる
@@ -8,7 +9,7 @@ public class UnityChanController : MonoBehaviour {
 	//Unityちゃんを移動させるコンポーネントを入れる
 	private Rigidbody myRigidbody;
 	//前進するための力
-	private float forwardForce = 800.0f;
+	public float forwardForce = 800.0f;
 	//左右に移動するための力
 	private float turnForce = 500.0f;
 	//ジャンプするための力
@@ -33,10 +34,20 @@ public class UnityChanController : MonoBehaviour {
 	//右ボタン押下の判定
 	private bool isRButtonDown = false;
 
+	//muzzle（ゲーム終了時破壊用）
+	private GameObject objofmuzzle;
+
+	private GameObject objofstop;
+
+
+
 
 
 	// Use this for initialization
 	void Start () {
+
+		this.objofmuzzle = GameObject.Find ("Muzzle");
+		this.objofstop = GameObject.Find ("Main Camera");
 
 		//アニメータコンポーネントを取得
 		this.myAnimator = GetComponent<Animator>();
@@ -52,6 +63,8 @@ public class UnityChanController : MonoBehaviour {
 
 		//シーン中のscoreTextオブジェクトを取得
 		this.scoreText = GameObject.Find("ScoreText");
+	
+
 
 	}
 
@@ -61,10 +74,21 @@ public class UnityChanController : MonoBehaviour {
 
 		//ゲーム終了ならUnityちゃんの動きを減衰する
 		if (this.isEnd) {
-			this.forwardForce *= this.coefficient;
+			
+			this.forwardForce =0f;
 			this.turnForce *= this.coefficient;
 			this.upForce *= this.coefficient;
 			this.myAnimator.speed *= this.coefficient;
+			if (Input.GetKeyDown(KeyCode.R))
+				SceneManager.LoadScene ("GameScene");
+			if (Input.GetKeyDown(KeyCode.E))
+				SceneManager.LoadScene ("Title");
+			//muzzle破壊
+			Destroy (this.objofmuzzle);
+			//Main CameraのStopScript破壊
+			Destroy (this.objofstop.GetComponent<StopScript> ());
+
+
 
 		}
 
@@ -105,7 +129,7 @@ public class UnityChanController : MonoBehaviour {
 		if (other.gameObject.tag == "CarTag" || other.gameObject.tag == "TrafficConeTag") {
 			this.isEnd = true;
 			//stateTextにGAME OVERを表示
-			this.stateText.GetComponent<Text>().text = "GAME OVER";
+			this.stateText.GetComponent<Text>().text = "<b><size=100>GAME OVER!</size></b>\n \n\n Press  R  Key = Retry \n Press  E  Key = Exit";
 
 		}
 
@@ -113,7 +137,7 @@ public class UnityChanController : MonoBehaviour {
 		if (other.gameObject.tag == "GoalTag") {
 			this.isEnd = true;
 			//stateTextにGAME CLEARを表示
-			this.stateText.GetComponent<Text>().text = "CLEAR!!";
+			this.stateText.GetComponent<Text>().text = "<b><size=100>CLEAR!!</size></b> \n \n\n Press  R  Key = Retry \n Press  E  Key = Exit";
 		}                
 		//コインに衝突した場合
 		if (other.gameObject.tag == "CoinTag") {

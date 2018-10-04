@@ -9,7 +9,7 @@ public class ItemGenerator : MonoBehaviour {
 	//cornPrefabを入れる
 	public GameObject conePrefab;
 	//スタート地点
-	private int startPos = -160;
+	private int startPos = -200;
 	//ゴール地点
 	private int goalPos = 120;
 	//アイテムを出すx方向の範囲

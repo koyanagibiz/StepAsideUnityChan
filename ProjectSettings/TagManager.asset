@@ -10,6 +10,8 @@ TagManager:
   - TrafficConeTag
   - BulletTag
   - UnityChanTag
+  - EnemyTag
+  - Enemy2Tag
   layers:
   - Default
   - TransparentFX

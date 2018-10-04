@@ -9,21 +9,29 @@ public class StopScript : MonoBehaviour {
 
 	public GameObject pauseText;
 
+	public GameObject forwardforceofunitychan;
+
+
 void Start(){
 
-		pausing = false;
-		this.pauseText = GameObject.Find("PauseText");
-		this.pauseText.SetActive (false);
+		pausing = true;
+		this.pauseText = GameObject.Find("PausePanel");
+		this.pauseText.SetActive (true);
+		this.forwardforceofunitychan.GetComponent<UnityChanController> ().forwardForce = 800.0f;
+
+
+
 	}
 
 void Update(){
 		if (this.pausing) {
 			Time.timeScale = 0f;
-			this.pauseText.GetComponent<Text>().text = "PAUSE";
+			this.forwardforceofunitychan.GetComponent<UnityChanController> ().forwardForce = 0f;
+
 			pauseText.SetActive (true);
 		} else {
 			Time.timeScale = 1f;
-			this.pauseText.GetComponent<Text>().text = "";
+			this.forwardforceofunitychan.GetComponent<UnityChanController> ().forwardForce = 800.0f;
 			pauseText.SetActive (false);
 		}
 
