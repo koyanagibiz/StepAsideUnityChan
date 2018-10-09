@@ -39,6 +39,9 @@ public class UnityChanController : MonoBehaviour {
 
 	private GameObject objofstop;
 
+	public AudioSource coinaudio;
+
+
 
 
 
@@ -142,7 +145,7 @@ public class UnityChanController : MonoBehaviour {
 		//コインに衝突した場合
 		if (other.gameObject.tag == "CoinTag") {
 
-
+			this.coinaudio.Play ();
 
 			//パーティクルを再生
 			GetComponent<ParticleSystem> ().Play ();

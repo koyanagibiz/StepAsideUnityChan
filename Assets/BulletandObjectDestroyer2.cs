@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class BulletandObjectDestroyer2 : MonoBehaviour {
 
+
 	public GameObject score;
 	public GameObject getpoint;
 	public GameObject explode;
 	public GameObject explode2;
 	public GameObject explode3;
+
+
 
 
 	// Use this for initialization
@@ -18,6 +21,9 @@ public class BulletandObjectDestroyer2 : MonoBehaviour {
 		//ScoreTextを取得
 		this.score = GameObject.Find ("ScoreText");
 		this.getpoint = GameObject.Find ("GetText");
+
+
+
 
 	}
 
@@ -36,8 +42,9 @@ public class BulletandObjectDestroyer2 : MonoBehaviour {
 			this.score.GetComponent<Score> ().AddPoint (10);
 			this.getpoint.GetComponent<Text> ().text = "Car! 10 points!";
 
-
 			Instantiate(explode, this.transform.position, Quaternion.identity);
+
+
 
 			//破壊処理実行
 			Destroy (other.gameObject);
